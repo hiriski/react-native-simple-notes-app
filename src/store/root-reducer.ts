@@ -1,21 +1,16 @@
 import { combineReducers } from 'redux';
 
+// Reducers.
+import { themeReducer, ThemeState } from '@/modules/theme/redux';
+import { toastReducer, ToastState } from '@/modules/toast/redux';
+
 // Root State.
 export type RootState = {
-  myReducer: {
-    foo: string;
-  };
-};
-
-// Reducers.
-type MyState = {
-  foo: string;
-};
-
-export const myReducer = (state: MyState = { foo: 'bar' }, action: any): MyState => {
-  return state;
+  theme: ThemeState;
+  toast: ToastState;
 };
 
 export default combineReducers<RootState>({
-  myReducer,
+  theme: themeReducer,
+  toast: toastReducer,
 });

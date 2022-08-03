@@ -8,7 +8,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { enableScreens } from 'react-native-screens';
 
 // Providers.
-import { ReduxProvider, NavigationProvider, SafeAreaProvider } from '@/components/providers';
+import { ReduxProvider, ThemeProvider, NavigationProvider, SafeAreaProvider } from '@/components/providers';
 
 // RootStack navigator.
 import { RootStackNavigator } from '@/navigators';
@@ -16,20 +16,28 @@ import { RootStackNavigator } from '@/navigators';
 // Bottom sheet modal provider.
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
+// Toast
+import { Toast } from '@/components/core/toast';
+import { StatusBar } from '@/components/shared';
+
 enableScreens();
 
 const App: FC = () => {
   return (
     <ReduxProvider>
-      <NavigationProvider>
-        <GestureHandlerRootView style={styles.root}>
-          <SafeAreaProvider>
-            <BottomSheetModalProvider>
-              <RootStackNavigator />
-            </BottomSheetModalProvider>
-          </SafeAreaProvider>
-        </GestureHandlerRootView>
-      </NavigationProvider>
+      <ThemeProvider>
+        <NavigationProvider>
+          <GestureHandlerRootView style={styles.root}>
+            <SafeAreaProvider>
+              <BottomSheetModalProvider>
+                <StatusBar translucent backgroundColor="transparent" />
+                <Toast />
+                <RootStackNavigator />
+              </BottomSheetModalProvider>
+            </SafeAreaProvider>
+          </GestureHandlerRootView>
+        </NavigationProvider>
+      </ThemeProvider>
     </ReduxProvider>
   );
 };
