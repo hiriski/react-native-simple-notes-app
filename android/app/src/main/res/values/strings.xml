@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">SimpleNotes</string>
+    <string name="app_name">Simple Notes</string>
+    <string name="app_description">Just a simple notes app</string>
 </resources>

@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
         <item name="android:navigationBarColor">@color/color_primary_main</item>
+        <item name="android:windowLightNavigationBar">false</item>
     </style>
 
     <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -12,6 +13,6 @@
         <item name="colorPrimaryDark">@color/color_primary_main</item>
         <item name="android:statusBarColor">@color/color_primary_main</item>
         <item name="android:navigationBarColor">@color/color_primary_main</item>
+        <item name="android:windowLightNavigationBar">false</item>
     </style>
-
 </resources>

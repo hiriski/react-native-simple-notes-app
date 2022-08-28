@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splash_screen_logo">96dp</dimen>
+    <dimen name="splash_screen_spacer">18dp</dimen>
+    <dimen name="splash_screen_text_title">22sp</dimen>
+</resources>
