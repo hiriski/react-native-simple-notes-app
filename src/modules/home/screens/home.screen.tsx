@@ -1,56 +1,54 @@
 import React, { FC } from 'react';
-import { View, StyleSheet, SafeAreaView, Button } from 'react-native';
+import { StyleSheet, TouchableOpacity, Image, FlatList, ListRenderItem } from 'react-native';
 
 import { RoutesConstant } from '@/constants';
 import { IRootStackParamList } from '@/navigators';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useDispatch } from 'react-redux';
-import { toast_actionSetToast } from '@/modules/toast/redux';
-import { theme_actionToggleMode } from '@/modules/theme/redux';
 import { useTheme } from '@/modules/theme/hooks';
-import { Typography } from '@/components/core';
+import { SafeAreaView, ScreenTitle } from '@/components/shared';
+import { NotesSmIcon } from '@/assets';
+import { useNotes } from '@/modules/notes/hooks/use-notes';
+import { INote } from '@/modules/notes/interfaces';
+import { NotesCardItem } from '@/modules/notes/components';
+import { createSpacing } from '@/modules/theme/utils';
 
-type Props = NativeStackScreenProps<IRootStackParamList, typeof RoutesConstant.HomeScreen>;
+type Props = NativeStackScreenProps<IRootStackParamList, typeof RoutesConstant.BottomTab.HomeScreen>;
 
 export const HomeScreen: FC<Props> = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
-  const handleShowToast = (): void => {
-    dispatch(
-      toast_actionSetToast({
-        show: true,
-        messages: 'Opss. something went wrong!',
-        severity: 'error',
-        variant: 'filled',
-        enableCloseButton: true,
-        autoHide: false,
-        placement: 'top',
-      }),
-    );
-  };
+  const { notes } = useNotes();
 
+  const renderItem: ListRenderItem<INote> = ({ item, index }) => (
+    <NotesCardItem item={item} isLastItem={index === notes?.length - 1} />
+  );
   return (
-    <SafeAreaView style={StyleSheet.flatten([styles.root, { backgroundColor: theme.palette.background.default }])}>
-      <View>
-        <Typography style={styles.font}>Hello 👋 </Typography>
-        <Button onPress={() => dispatch(theme_actionToggleMode())} title="Toggle theme mode" />
-        <Button onPress={handleShowToast} title="Toggle Toast" />
-      </View>
+    <SafeAreaView backgroundColor="paper">
+      <ScreenTitle
+        title="My Notes"
+        renderLeftContent={
+          <TouchableOpacity activeOpacity={0.7}>
+            <Image source={NotesSmIcon} style={{ height: 26, width: 26 }} />
+          </TouchableOpacity>
+        }
+      />
+      <FlatList
+        data={notes}
+        renderItem={renderItem}
+        numColumns={2}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.flatListContentContainer}
+        showsVerticalScrollIndicator={false}
+      />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ececec',
-  },
-  font: {
-    fontFamily: 'Plus Jakarta Sans',
-    fontWeight: '300',
-    fontSize: 26,
+  flatListContentContainer: {
+    paddingHorizontal: createSpacing(4),
+    paddingBottom: createSpacing(3),
   },
 });

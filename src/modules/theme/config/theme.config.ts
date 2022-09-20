@@ -17,9 +17,9 @@ import { IThemePalette, IThemeShape, IThemeTypography } from '@/modules/theme/in
 /**  Base palette */
 export const paletteBase: Omit<IThemePalette, 'background' | 'text' | 'mode' | 'divider'> = {
   primary: {
-    main: '#FF4564',
-    dark: '#F10930',
-    light: '#FEF2EF',
+    main: '#FFB11A',
+    dark: '#DB9013',
+    light: '#FFF5D1',
     contrastText: '#fbfbfb',
   },
   secondary: {
@@ -70,7 +70,7 @@ export const paletteLight: Pick<IThemePalette, 'text' | 'background' | 'mode' | 
     default: '#f9f9f9',
     paper: '#fff',
   },
-  divider: 'rgba(0, 0, 0, 0.12)',
+  divider: 'rgba(0, 0, 0, 0.03)',
 };
 
 /** Palette dark */
@@ -104,7 +104,7 @@ export const typography: IThemeTypography = {
 
 /** Shape */
 export const shape: IThemeShape = {
-  borderRadius: 3,
+  borderRadius: 5,
 };
 
 /** Theme spacing */

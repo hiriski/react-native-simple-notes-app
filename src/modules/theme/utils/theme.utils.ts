@@ -152,3 +152,11 @@ export const getContrastTextColor = (color: keyof IThemePalette, palette: ITheme
     return palette.common.white;
   }
 };
+
+/**
+ * Is dark mode
+ *
+ * @param {ITheme} theme
+ * @returns {boolean}
+ */
+export const isDarkMode = (theme: ITheme): boolean => theme.palette.mode === 'dark';

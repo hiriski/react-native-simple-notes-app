@@ -1,3 +1,9 @@
 export const RoutesConstant = {
-  HomeScreen: 'HomeScreen',
+  BottomTabStack: 'BottomTabStack',
+  EditableNoteScreen: 'EditableNoteScreen',
+  DetailsNotesScreen: 'DetailsNotesScreen',
+  BottomTab: {
+    HomeScreen: 'HomeScreen',
+    SettingsScreen: 'SettingsScreen',
+  },
 };

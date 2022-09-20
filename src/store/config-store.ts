@@ -13,7 +13,7 @@ const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  // whitelist: [], // (Save Specific Reducers)
+  whitelist: [], // (Save Specific Reducers)
   // blacklist: [], // (Don't Save Specific Reducers)
 };
 
